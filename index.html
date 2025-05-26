@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Traffic Sign Recognition</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Traffic Sign Recognition</h1>
+        <form method="POST" enctype="multipart/form-data">
+            <label>Select an image:</label><br>
+            <input type="file" name="image" accept="image/*" required><br>
+            <input type="submit" value="Predict">
+        </form>
+
+        {% if label %}
+        <div class="result">
+            <div class="prediction-text">{{ label }}</div>
+            {% if prediction %}
+            <img src="{{ url_for('static', filename='uploads/' + prediction) }}" alt="Predicted Image" style="max-width: 300px; margin-top: 10px;">
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
